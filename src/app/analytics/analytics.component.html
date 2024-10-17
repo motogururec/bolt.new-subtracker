@@ -1,0 +1,23 @@
+<ActionBar title="Analytics">
+  <NavigationButton text="Back" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout class="p-4">
+    <RadCartesianChart>
+      <CategoricalAxis tkCartesianHorizontalAxis></CategoricalAxis>
+      <LinearAxis tkCartesianVerticalAxis></LinearAxis>
+      <BarSeries tkCartesianSeries [items]="categoryData" categoryProperty="category" valueProperty="cost"></BarSeries>
+    </RadCartesianChart>
+
+    <Label text="Potential Savings" class="text-lg font-bold m-t-20"></Label>
+    <ListView [items]="potentialSavings">
+      <ng-template let-item="item">
+        <StackLayout class="p-2">
+          <Label [text]="item.name + ' - $' + item.cost + '/month'" class="text-md"></Label>
+          <Label text="Not used in the last month" class="text-sm text-gray-500"></Label>
+        </StackLayout>
+      </ng-template>
+    </ListView>
+  </StackLayout>
+</ScrollView>

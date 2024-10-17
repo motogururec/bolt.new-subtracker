@@ -1,0 +1,17 @@
+<ActionBar [title]="subscription?.name">
+  <NavigationButton text="Back" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout class="p-4">
+    <Label [text]="'Cost: $' + subscription?.cost + ' / month'" class="text-lg"></Label>
+    <Label [text]="'Category: ' + subscription?.category" class="text-lg"></Label>
+    <Label [text]="'Status: ' + subscription?.status" class="text-lg"></Label>
+    <Label [text]="'Next Renewal: ' + (subscription?.renewalDate | date:'mediumDate')" class="text-lg"></Label>
+    
+    <Button text="Pause Subscription" *ngIf="subscription?.status === 'active'" (tap)="onPauseSubscription()" class="btn btn-warning m-t-20"></Button>
+    <Button text="Resume Subscription" *ngIf="subscription?.status === 'paused'" (tap)="onResumeSubscription()" class="btn btn-primary m-t-20"></Button>
+    <Button text="Cancel Subscription" *ngIf="subscription?.status !== 'canceled'" (tap)="onCancelSubscription()" class="btn btn-danger m-t-20"></Button>
+    <Button text="Delete Subscription" (tap)="onDeleteSubscription()" class="btn btn-outline m-t-20"></Button>
+  </StackLayout>
+</ScrollView>

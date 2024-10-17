@@ -1,0 +1,13 @@
+<ActionBar title="Add Subscription">
+  <NavigationButton text="Back" android.systemIcon="ic_menu_back"></NavigationButton>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout class="p-4">
+    <TextField [(ngModel)]="newSubscription.name" hint="Subscription Name" class="input m-b-10"></TextField>
+    <TextField [(ngModel)]="newSubscription.cost" hint="Monthly Cost" keyboardType="number" class="input m-b-10"></TextField>
+    <DatePicker [(ngModel)]="newSubscription.renewalDate" class="m-b-10"></DatePicker>
+    <TextField [(ngModel)]="newSubscription.category" hint="Category" class="input m-b-10"></TextField>
+    <Button text="Add Subscription" (tap)="onAddSubscription()" class="btn btn-primary"></Button>
+  </StackLayout>
+</ScrollView>
